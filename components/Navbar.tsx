@@ -1,36 +1,36 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
-import Image from 'next/image'
-import ThemeToggle from './ThemeToggle'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#tech', label: 'Technology' },
-  { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
-]
+  { href: "#services", label: "Services" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#tech", label: "Technology" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass-card shadow-lg shadow-black/10' : 'bg-transparent'
+        scrolled ? "glass-card shadow-lg shadow-black/10" : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -85,17 +85,17 @@ export default function Navbar() {
             <div className="w-5 flex flex-col gap-1.5">
               <span
                 className={`block h-0.5 bg-current rounded transition-all duration-300 origin-center ${
-                  mobileOpen ? 'rotate-45 translate-y-2' : ''
+                  mobileOpen ? "rotate-45 translate-y-2" : ""
                 }`}
               />
               <span
                 className={`block h-0.5 bg-current rounded transition-all duration-300 ${
-                  mobileOpen ? 'opacity-0 scale-x-0' : ''
+                  mobileOpen ? "opacity-0 scale-x-0" : ""
                 }`}
               />
               <span
                 className={`block h-0.5 bg-current rounded transition-all duration-300 origin-center ${
-                  mobileOpen ? '-rotate-45 -translate-y-2' : ''
+                  mobileOpen ? "-rotate-45 -translate-y-2" : ""
                 }`}
               />
             </div>
@@ -109,9 +109,9 @@ export default function Navbar() {
           <motion.div
             key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden border-t border-border overflow-hidden glass-card"
           >
             <div className="px-4 py-5 flex flex-col gap-1">
@@ -139,5 +139,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
-  )
+  );
 }

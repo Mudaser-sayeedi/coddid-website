@@ -1,62 +1,63 @@
-'use client'
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const TESTIMONIALS = [
   {
-    name: 'Sarah Johnson',
-    role: 'CEO, TechVentures Inc.',
-    initials: 'SJ',
-    color: '#547ec0',
+    name: "Sarah Johnson",
+    role: "CEO, TechVentures Inc.",
+    initials: "SJ",
+    color: "#547ec0",
     quote:
       "Coddid transformed our vision into a stunning digital product. Their attention to detail, technical excellence, and genuine dedication to our success exceeded every expectation. I'd work with them again without hesitation.",
     rating: 5,
   },
   {
-    name: 'Marcus Williams',
-    role: 'CTO, HealthCore Systems',
-    initials: 'MW',
-    color: '#32a84e',
+    name: "Marcus Williams",
+    role: "CTO, HealthCore Systems",
+    initials: "MW",
+    color: "#32a84e",
     quote:
       "Working with Coddid was a game-changer. They delivered our complex healthcare platform on time and on budget, with exceptional code quality and thoughtful architecture that has scaled perfectly.",
     rating: 5,
   },
   {
-    name: 'Priya Patel',
-    role: 'Founder, ShopEase',
-    initials: 'PP',
-    color: '#f2ba1a',
+    name: "Priya Patel",
+    role: "Founder, ShopEase",
+    initials: "PP",
+    color: "#f2ba1a",
     quote:
-      'The e-commerce platform Coddid built for us has been outstanding. Our conversion rate jumped 40% in the first quarter after launch. Their team is responsive, talented, and a joy to work with.',
+      "The e-commerce platform Coddid built for us has been outstanding. Our conversion rate jumped 40% in the first quarter after launch. Their team is responsive, talented, and a joy to work with.",
     rating: 5,
   },
   {
-    name: 'David Chen',
-    role: 'Product Director, FinFlow',
-    initials: 'DC',
-    color: '#e94535',
+    name: "David Chen",
+    role: "Product Director, FinFlow",
+    initials: "DC",
+    color: "#e94535",
     quote:
-      'Exceptional team, exceptional results. The real-time dashboard handles complex financial data beautifully. Our users consistently comment on how intuitive and fast the interface is.',
+      "Exceptional team, exceptional results. The real-time dashboard handles complex financial data beautifully. Our users consistently comment on how intuitive and fast the interface is.",
     rating: 5,
   },
-]
+];
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(0);
 
   // Auto-advance
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % TESTIMONIALS.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
+      setCurrent((c) => (c + 1) % TESTIMONIALS.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const prev = () => setCurrent((c) => (c - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
-  const next = () => setCurrent((c) => (c + 1) % TESTIMONIALS.length)
+  const prev = () =>
+    setCurrent((c) => (c - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const next = () => setCurrent((c) => (c + 1) % TESTIMONIALS.length);
 
-  const t = TESTIMONIALS[current]
+  const t = TESTIMONIALS[current];
 
   return (
     <section className="py-28 relative overflow-hidden">
@@ -67,7 +68,7 @@ export default function Testimonials() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 opacity-5 pointer-events-none"
         style={{
           background: `radial-gradient(ellipse, ${t.color} 0%, transparent 70%)`,
-          transition: 'background 0.5s ease',
+          transition: "background 0.5s ease",
         }}
       />
 
@@ -96,7 +97,7 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="glass-card rounded-2xl p-8 sm:p-12"
             >
               {/* Stars */}
@@ -145,7 +146,11 @@ export default function Testimonials() {
               ←
             </button>
 
-            <div className="flex gap-2" role="tablist" aria-label="Testimonials">
+            <div
+              className="flex gap-2"
+              role="tablist"
+              aria-label="Testimonials"
+            >
               {TESTIMONIALS.map((_, i) => (
                 <button
                   key={i}
@@ -153,7 +158,7 @@ export default function Testimonials() {
                   aria-selected={i === current}
                   onClick={() => setCurrent(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === current ? 'bg-brand-blue w-6' : 'bg-border w-2'
+                    i === current ? "bg-brand-blue w-6" : "bg-border w-2"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -171,5 +176,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }

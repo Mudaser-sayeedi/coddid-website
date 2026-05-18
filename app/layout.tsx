@@ -45,8 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Coddid — Building Digital Excellence",
-    description:
-      "Cutting-edge digital solutions for modern businesses.",
+    description: "Cutting-edge digital solutions for modern businesses.",
     creator: "@coddid",
   },
   robots: {
@@ -82,4 +81,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -1,37 +1,55 @@
-'use client'
+"use client";
 
-import { motion, Variants } from 'framer-motion'
+import { motion, Variants } from "framer-motion";
 
 const SERVICES = [
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
       </svg>
     ),
-    title: 'Web Development',
+    title: "Web Development",
     description:
-      'Modern, blazing-fast web applications built with React, Next.js, and TypeScript. From landing pages to complex SaaS platforms.',
-    color: '#547ec0',
-    tags: ['React', 'Next.js', 'TypeScript', 'Node.js'],
+      "Modern, blazing-fast web applications built with React, Next.js, and TypeScript. From landing pages to complex SaaS platforms.",
+    color: "#547ec0",
+    tags: ["React", "Next.js", "TypeScript", "Node.js"],
   },
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
         <line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
-    title: 'Mobile Development',
+    title: "Mobile Development",
     description:
-      'Native and cross-platform mobile apps for iOS and Android that deliver exceptional user experiences and high performance.',
-    color: '#32a84e',
-    tags: ['React Native', 'Flutter', 'iOS', 'Android'],
+      "Native and cross-platform mobile apps for iOS and Android that deliver exceptional user experiences and high performance.",
+    color: "#32a84e",
+    tags: ["React Native", "Flutter", "iOS", "Android"],
   },
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <circle cx="12" cy="12" r="10" />
         <circle cx="12" cy="12" r="4" />
         <line x1="4.93" y1="4.93" x2="9.17" y2="9.17" />
@@ -40,58 +58,76 @@ const SERVICES = [
         <line x1="4.93" y1="19.07" x2="9.17" y2="14.83" />
       </svg>
     ),
-    title: 'UI/UX Design',
+    title: "UI/UX Design",
     description:
-      'Pixel-perfect, user-centered interfaces designed with psychology and accessibility in mind to maximize engagement and conversions.',
-    color: '#f2ba1a',
-    tags: ['Figma', 'Design Systems', 'Prototyping', 'Accessibility'],
+      "Pixel-perfect, user-centered interfaces designed with psychology and accessibility in mind to maximize engagement and conversions.",
+    color: "#f2ba1a",
+    tags: ["Figma", "Design Systems", "Prototyping", "Accessibility"],
   },
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
-    title: 'Cloud & DevOps',
+    title: "Cloud & DevOps",
     description:
-      'Scalable cloud infrastructure, CI/CD pipelines, containerisation, and DevOps practices to keep your systems resilient and fast.',
-    color: '#e94535',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+      "Scalable cloud infrastructure, CI/CD pipelines, containerisation, and DevOps practices to keep your systems resilient and fast.",
+    color: "#e94535",
+    tags: ["AWS", "Docker", "Kubernetes", "CI/CD"],
   },
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
       </svg>
     ),
-    title: 'AI & Automation',
+    title: "AI & Automation",
     description:
-      'Intelligent solutions powered by machine learning to automate processes, extract insights, and unlock competitive advantages.',
-    color: '#547ec0',
-    tags: ['OpenAI', 'LangChain', 'Python', 'ML Pipelines'],
+      "Intelligent solutions powered by machine learning to automate processes, extract insights, and unlock competitive advantages.",
+    color: "#547ec0",
+    tags: ["OpenAI", "LangChain", "Python", "ML Pipelines"],
   },
   {
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
       </svg>
     ),
-    title: 'Custom Software',
+    title: "Custom Software",
     description:
-      'Tailor-made enterprise software built precisely around your business workflows — APIs, integrations, and internal tools.',
-    color: '#32a84e',
-    tags: ['API Development', 'Integrations', 'Enterprise', 'SaaS'],
+      "Tailor-made enterprise software built precisely around your business workflows — APIs, integrations, and internal tools.",
+    color: "#32a84e",
+    tags: ["API Development", "Integrations", "Enterprise", "SaaS"],
   },
-]
+];
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: 'easeOut' },
+    transition: { duration: 0.55, delay: i * 0.08, ease: "easeOut" },
   }),
-}
+};
 
 export default function Services() {
   return (
@@ -115,8 +151,8 @@ export default function Services() {
             Our <span className="gradient-text">Services</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-            End-to-end digital solutions designed to accelerate your business growth and
-            deliver measurable results.
+            End-to-end digital solutions designed to accelerate your business
+            growth and deliver measurable results.
           </p>
         </motion.div>
 
@@ -174,5 +210,5 @@ export default function Services() {
         </div>
       </div>
     </section>
-  )
+  );
 }
