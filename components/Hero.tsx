@@ -12,6 +12,7 @@ const SYMBOLS = [
     delay: 0,
     color: "#547ec0",
     size: "text-xl",
+    mobileHide: false,
   },
   {
     text: "< >",
@@ -20,6 +21,7 @@ const SYMBOLS = [
     delay: 0.6,
     color: "#32a84e",
     size: "text-xl",
+    mobileHide: true,
   },
   {
     text: ";",
@@ -28,6 +30,7 @@ const SYMBOLS = [
     delay: 1.1,
     color: "#e94535",
     size: "text-2xl",
+    mobileHide: false,
   },
   {
     text: "▶",
@@ -36,6 +39,7 @@ const SYMBOLS = [
     delay: 1.6,
     color: "#f2ba1a",
     size: "text-lg",
+    mobileHide: true,
   },
   {
     text: "()",
@@ -44,6 +48,7 @@ const SYMBOLS = [
     delay: 2.0,
     color: "#547ec0",
     size: "text-base",
+    mobileHide: true,
   },
   {
     text: "//",
@@ -52,14 +57,16 @@ const SYMBOLS = [
     delay: 0.9,
     color: "#32a84e",
     size: "text-sm",
+    mobileHide: false,
   },
   {
     text: "[]",
-    x: "91%",
+    x: "88%",
     y: "40%",
     delay: 1.4,
     color: "#f2ba1a",
     size: "text-base",
+    mobileHide: true,
   },
   {
     text: "=>",
@@ -68,6 +75,7 @@ const SYMBOLS = [
     delay: 0.4,
     color: "#e94535",
     size: "text-sm",
+    mobileHide: true,
   },
   {
     text: "fn()",
@@ -76,6 +84,7 @@ const SYMBOLS = [
     delay: 1.8,
     color: "#547ec0",
     size: "text-xs",
+    mobileHide: false,
   },
   {
     text: "**",
@@ -84,6 +93,7 @@ const SYMBOLS = [
     delay: 0.2,
     color: "#32a84e",
     size: "text-sm",
+    mobileHide: true,
   },
 ];
 
@@ -124,7 +134,7 @@ export default function Hero() {
       {SYMBOLS.map((s, i) => (
         <motion.div
           key={i}
-          className={`absolute font-mono font-bold pointer-events-none select-none ${s.size}`}
+          className={`absolute font-mono font-bold pointer-events-none select-none ${s.size}${s.mobileHide ? " hidden sm:block" : ""}`}
           style={{ left: s.x, top: s.y, color: s.color }}
           animate={{ y: [0, -16, 0], opacity: [0.25, 0.65, 0.25] }}
           transition={{
@@ -177,7 +187,7 @@ export default function Hero() {
           {/* CTA buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 mb-20"
+            className="flex flex-col sm:flex-row gap-4 mb-12 sm:mb-20"
           >
             <motion.a
               href="#contact"
@@ -203,7 +213,7 @@ export default function Hero() {
           {/* Stats row */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-8 sm:gap-14"
+            className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-center gap-x-8 gap-y-6 sm:gap-14"
           >
             {[
               { value: "50+", label: "Projects Delivered", color: "#547ec0" },
